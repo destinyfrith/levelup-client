@@ -8,10 +8,10 @@ export const NavBar = () => {
     return (
         <ul className="navbar">
             <li className="navbar__item">
-                Navigation link
+                Games
             </li>
             <li className="navbar__item">
-                Navigation link
+                Events
             </li>
             <li className="navbar__item">
                 Navigation link
