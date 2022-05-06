@@ -110,7 +110,7 @@ export const GameForm = () => {
                     createGame(game)
                         .then(() => history.push("/games"))
                 }}
-                className="btn btn-primary">Create</button>
+                className="btn-2">Create</button>
         </form>
     )
 }

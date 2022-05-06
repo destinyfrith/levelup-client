@@ -12,7 +12,7 @@ export const GameList = (props) => {
 
     return (
         <article className="games">
-            <button className="btn btn-2 btn-sep icon-create"
+            <button className="btn btn-1"
                 onClick={() => {
                     history.push({ pathname: "/games/new" })
                 }}
@@ -23,6 +23,9 @@ export const GameList = (props) => {
                         <div className="game__title">{game.title} by {game.maker}</div>
                         <div className="game__players">{game.number_of_players} players needed</div>
                         <div className="game__skillLevel">Skill level is {game.skill_level}</div>
+                        <button className="edit-btn" onClick={() => {
+                            history.push(`games/edit/${game.id}`)
+                        }}>Edit Game</button>
                     </section>
                 })
             }

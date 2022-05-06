@@ -26,6 +26,7 @@ export const EventList = (props) => {
                         <div className="event__description">{event.description} organized by {event.organizer.user.first_name} </div>
                         <div className="event__time">{event.time} on {event.date} </div>
                         <div className="event__game">We will play {event.game.title}</div>
+                        
                     </section>
                 })
             }
