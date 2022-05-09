@@ -195,6 +195,7 @@ code {
 	content: "🔓";
 }
 
-.edit-btn {
+.edit-btn, .delete-btn {
 	background: rgb(158, 205, 152);
+	margin: 2px;
 }

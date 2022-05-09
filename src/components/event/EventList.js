@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { getEvents } from "./EventManager.js"
+import { getEvents, deleteEvent } from "./EventManager.js"
 import { useHistory } from "react-router-dom"
 
 export const EventList = (props) => {
@@ -7,9 +7,23 @@ export const EventList = (props) => {
     const history = useHistory()
 
     // event listener that will fetch and set all current events for list
+    const eventsState = () => {
+        getEvents()
+            .then((data) => {
+                setEvents(data)
+            })
+    }
+
     useEffect(() => {
-        getEvents().then(data => setEvents(data))
+        eventsState()
     }, [])
+
+    // delete event listener
+    const onClickDelete = (eventId) => {
+        deleteEvent(eventId).then((data) => {
+            eventsState(data)
+        })
+    }
 
     // html display of events 
     // will route to new event form when button is clicked 
@@ -29,6 +43,7 @@ export const EventList = (props) => {
                         <button className="edit-btn" onClick={() => {
                             history.push(`events/edit/${event.id}`)
                         }}>Edit Event</button>
+                        <button className="delete-btn" onClick={() => { onClickDelete(event.id) }}>Delete Event</button>
                     </section>
                 })
             }

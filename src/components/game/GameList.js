@@ -1,14 +1,30 @@
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
-import { getGames } from "./GameManager.js"
+import { getGames, deleteGame } from "./GameManager.js"
 
 export const GameList = (props) => {
     const [games, setGames] = useState([])
     const history = useHistory()
 
+    // initial setting of state for games
+    const gamesState = () => {
+        getGames()
+            .then((data) => {
+                setGames(data)
+            })
+    }
+
+    // this useeffect fetches the current state of all games (list)
     useEffect(() => {
-        getGames().then(data => setGames(data))
+        gamesState()
     }, [])
+
+    // delete event listener
+    const onClickDelete = (id) => {
+        deleteGame(id).then((data) => {
+            gamesState(data)
+        })
+    }
 
     return (
         <article className="games">
@@ -26,6 +42,7 @@ export const GameList = (props) => {
                         <button className="edit-btn" onClick={() => {
                             history.push(`games/edit/${game.id}`)
                         }}>Edit Game</button>
+                        <button className="delete-btn" onClick={() => { onClickDelete(game.id) }}>Delete Game</button>
                     </section>
                 })
             }
