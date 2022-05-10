@@ -195,7 +195,12 @@ code {
 	content: "🔓";
 }
 
-.edit-btn, .delete-btn {
+.edit-btn, .delete-btn, .join-btn {
 	background: rgb(158, 205, 152);
+	margin: 2px;
+}
+
+.leave-btn {
+	background: rgb(228, 141, 141);
 	margin: 2px;
 }
